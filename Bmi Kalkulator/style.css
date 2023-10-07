@@ -76,3 +76,7 @@ body {
     background-color: rgb(5, 5, 172);
     opacity: 0.8;
 }
+
+.result {
+    display: none;
+}
