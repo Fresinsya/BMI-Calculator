@@ -1,52 +1,51 @@
-function formdata () {
-    const weight = document.getElementById("weight").value;
-    const height = document.getElementById("height").value;
-
+function formdata() {
+    const weight = parseFloat(document.getElementById("weight").value);
+    const height = parseFloat(document.getElementById("height").value);
     return {
         weight,
         height
     }
 }
 
-function calculateBMI (weight, height) {
-    return weight / (height / 100) ** 2;
+function calculateBMI(weight, height) {
+    return weight / ((height / 100) ** 2);
 }
 
-function formatnumber (number) {
+function formatnumber(number) {
     let formatted = number.toFixed(2);
-
-    if (formatted.endsWith(".0")) {
-        formatted = formatted.slice(0, -2);
+    if (formatted.endsWith(".00")) {
+        formatted = formatted.slice(0, -3);
+    } else if (formatted.endsWith("0")) {
+        formatted = formatted.slice(0, -1);
     }
-
     return formatted;
 }
 
-function category(num) {
+function getCategory(num) {
     if (num < 18.5) {
-        category = "Kurus";
+        return "Kurus";
     } else if (num >= 18.5 && num <= 24.9) {
-        category = "Normal";
+        return "Normal";
     } else if (num >= 25 && num <= 29.9) {
-        category = "Gemuk";
+        return "Gemuk";
     } else {
-        category = "Obesitas";
+        return "Obesitas";
     }
 }
 
-
-function submit () {
+function submit() {
     const result = document.querySelector(".result");
-    const kategori = document.getElementById("category");
+    const categoryElement = document.getElementById("category");
     const nilai = document.getElementById("nilai");
 
     let data = formdata();
-
     let bmi = calculateBMI(data.weight, data.height);
-    let category = category(bmi);
+    let num = getCategory(bmi);
 
     nilai.innerHTML = formatnumber(bmi);
-    kategori.innerHTML = num;
+    categoryElement.innerHTML = num;
+
+    result.style.display = "block";
 }
 
 const form = document.querySelector(".form");

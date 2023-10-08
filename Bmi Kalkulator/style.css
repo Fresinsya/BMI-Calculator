@@ -8,9 +8,9 @@
 
 body {
     border: 2px solid rgb(5, 5, 172);
-    width: 50%;
+    max-width: 50vw;
+    width: 80%;
     height: 80vh;
-
     margin: 50px auto;
 }
 
@@ -41,7 +41,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 30px auto;
+    margin: 30px auto 0 auto;
 
 }
 
@@ -79,4 +79,16 @@ body {
 
 .result {
     display: none;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result span {
+    font-size: 1em;
+    text-align: center;
+    color: white;
+    background-color: rgb(5, 5, 172);
+    padding: 7px;
+    border-radius: 20px;
 }
